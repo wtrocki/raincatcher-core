@@ -32,6 +32,7 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cors());
+app.use(express.static(__dirname + '/public'));
 passportSetup.init(app, sessionOpts);
 
 app.get('/testAdminEndpoint', authService.protect('admin'), (req: express.Request, res: express.Response) => {
