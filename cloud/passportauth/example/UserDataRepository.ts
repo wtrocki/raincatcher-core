@@ -2,7 +2,7 @@ import * as Promise from 'bluebird';
 import * as _ from 'lodash';
 import {User} from './UserSeedData';
 
-export interface UserDataRepo {
+export interface UserDataRepository {
   getUserById(id: string): Promise<User|undefined>;
 }
 

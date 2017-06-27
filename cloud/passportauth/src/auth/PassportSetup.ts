@@ -4,17 +4,23 @@ import {SessionOptions} from 'express-session';
 import * as passport from 'passport';
 import {Strategy} from 'passport-local';
 import {UserSec} from '../user/UserSec';
-
+  /**
+   * Test interface
+   */
 export interface Setup {
   init(app: express.Express, sessionOpts: SessionOptions): void;
   setStrategy(): void;
   setSerializeUser(): void;
   setDeserializeUser(): void;
 }
-
+  /**
+   * Test setup instance
+   */
 export class PassportSetup implements Setup {
   protected userSec: UserSec;
-
+  /**
+   * Test
+   */
   constructor(protected readonly userSecService: UserSec) {
     this.userSec = userSecService;
   }
@@ -60,7 +66,7 @@ export class PassportSetup implements Setup {
   /**
    * Sets the serializeUser function to be used by passport.
    */
-  public setSerializeUser() {
+  protected setupSerializeUser() {
     passport.serializeUser((userId: string, done) => {
       return done(null, userId);
     });
@@ -69,7 +75,7 @@ export class PassportSetup implements Setup {
   /**
    * Sets the deserializeUser function to be used by passport.
    */
-  public setDeserializeUser() {
+  protected setDeserializeUser() {
     passport.deserializeUser((userId: string, done) => {
       return done(null, userId);
     });

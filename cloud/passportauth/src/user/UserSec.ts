@@ -1,7 +1,6 @@
 import BaseUser from './BaseUser';
 
 export interface UserSec {
-  getUserId(loginId: string): Promise<string|null>;
   comparePassword(password: string): Promise<boolean>;
   hasResourceRole(role: string): Promise<boolean>;
 }
@@ -11,16 +10,6 @@ export class UserSecService implements UserSec {
 
   constructor(protected readonly UserApi: BaseUser) {
     this.userApi = UserApi;
-  }
-
-  /**
-   * Retrieves the user's id using the user's login id.
-   *
-   * @param loginId {string} - A unique login id
-   * @returns {Promise<string>} - Returns the user's id if found
-   */
-  public getUserId(loginId: string) {
-    return this.userApi.getId(loginId);
   }
 
   /**

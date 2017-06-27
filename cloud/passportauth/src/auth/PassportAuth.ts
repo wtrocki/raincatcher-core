@@ -1,7 +1,13 @@
 import * as express from 'express';
 import {UserSec} from '../user/UserSec';
 
+/**
+ * TODO
+ */
 export interface Auth {
+  /**
+   * TODO
+   */
   protect(role?: string): void;
 }
 
@@ -22,7 +28,7 @@ export class PassportAuth implements Auth {
    * @param role {string} [Optional] Role which the user needs in order to access this resource
    */
   public protect(role?: string) {
-    return (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    return function middleware(req: express.Request, res: express.Response, next: express.NextFunction) {
       if (req.isAuthenticated()) {
         if (!role) {
           return next();
