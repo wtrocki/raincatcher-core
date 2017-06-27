@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "main": "src/",
   "scripts": {
-    "clean": "del src/**/*.js src/**/*.map test/**/*.js test/**/*.map",
+    "clean": "del src/*.js src/**/*.js src/*.map src/**/*.map test/*.js test/**/*.js test/*.map test/**/*.map",
     "build": "tsc",
     "start": "ts-node src/index.ts",
     "test": "npm run clean && nyc mocha",
@@ -25,7 +25,7 @@
     ],
     "check-coverage": true,
     "lines": 75,
-    "functions": 100,
+    "functions": 90,
     "branches": 80
   },
   "devDependencies": {
